@@ -1,0 +1,14 @@
+t3n:
+  GraphQL:
+    endpoints:
+      'cr-graphql':
+        context: 't3n\GraphQL\ContentRepositoryAdapter\Context\NodeContext'
+        schemas:
+          cr:
+            typeDefs: 'resource://t3n.GraphQL.ContentRepositoryAdapter/Private/GraphQL/schema.core.graphql'
+            resolvers:
+              Query: 't3n\GraphQL\ContentRepositoryAdapter\Resolver\QueryResolver'
+              Node: 't3n\GraphQL\ContentRepositoryAdapter\Resolver\NodeResolver'
+              NodeQueries: 't3n\GraphQL\ContentRepositoryAdapter\Resolver\NodeQueriesResolver'
+              WithContextQueries: 't3n\GraphQL\ContentRepositoryAdapter\Resolver\WithContextQueriesResolver'
+              Context: 't3n\GraphQL\ContentRepositoryAdapter\Resolver\ContextResolver'

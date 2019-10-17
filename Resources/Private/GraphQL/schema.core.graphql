@@ -1,0 +1,47 @@
+type Dimension {
+    name: String!
+    value: String!
+}
+
+type Context {
+    workspaceName: String!
+    dimensions: [Dimension!]
+}
+
+type Workspace {
+    name: ID!
+    title: String!
+    description: String
+    baseWorkspace: Workspace
+}
+
+interface Node {
+    identifier: ID!
+    path: String!
+    name: String!
+    parentPath: String!
+    workspace: Workspace!
+    context: Context!
+}
+
+type WithContextQueries {
+    node: NodeQueries
+}
+
+type NodeQueries {
+    nodeByPath(path: String!): Node
+}
+
+type Query {
+    withContext: WithContextQueries
+    node: NodeQueries
+}
+
+type Mutation {
+    pong: String!
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
